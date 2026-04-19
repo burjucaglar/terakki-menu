@@ -425,12 +425,14 @@ const SectionBlock: FC<{ section: Section; idx: number }> = ({ section, idx }) =
     transition={{ delay: Math.min(idx, 6) * 0.05, duration: 0.5 }}
     className="mb-14"
   >
-    <div className="mb-6 flex items-baseline justify-between border-b border-stone-300 pb-3">
-      <h3 className="font-serif italic text-stone-700 text-lg tracking-wider uppercase">
+    <div className="mb-6 flex items-baseline justify-between border-b border-stone-400/60 pb-3">
+      <h3 className="font-serif italic text-stone-700 text-2xl tracking-wide">
         {section.category}
       </h3>
       {section.note && (
-        <span className="font-serif text-stone-600 text-sm tracking-wide">{section.note}</span>
+        <span className="font-serif text-stone-600 text-base tracking-wide italic">
+          {section.note}
+        </span>
       )}
     </div>
     <div className="space-y-5">
@@ -438,14 +440,18 @@ const SectionBlock: FC<{ section: Section; idx: number }> = ({ section, idx }) =
         <div key={`${item.name}-${i}`} className="flex items-baseline gap-4">
           <div className="flex-1 min-w-0">
             <div className="flex items-baseline">
-              <span className="font-medium text-stone-800 text-[15px]">{item.name}</span>
-              <span className="flex-1 mx-2 border-b border-dotted border-stone-300 translate-y-[-4px]" />
+              <span className="font-serif text-stone-900 text-lg leading-snug">{item.name}</span>
+              <span className="flex-1 mx-2 border-b border-dotted border-stone-300 translate-y-[-6px]" />
               {item.price && (
-                <span className="font-serif text-stone-600 text-sm shrink-0">{item.price}</span>
+                <span className="font-serif text-stone-700 text-base shrink-0 tracking-wide">
+                  {item.price}
+                </span>
               )}
             </div>
             {item.description && (
-              <p className="text-[12px] text-stone-500 leading-relaxed mt-1">{item.description}</p>
+              <p className="font-serif italic text-[14px] text-stone-500 leading-relaxed mt-1">
+                {item.description}
+              </p>
             )}
           </div>
         </div>
@@ -489,7 +495,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="font-serif italic text-stone-500 text-sm tracking-wide"
+          className="font-serif italic text-stone-500 text-lg tracking-wide"
         >
           {t.tagline}
         </motion.p>
@@ -557,13 +563,13 @@ export default function App() {
               transition={{ duration: 0.35 }}
             >
               <div className="text-center mb-10">
-                <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-3">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-3 font-sans">
                   {t.festival.badge}
                 </p>
-                <h2 className="font-serif text-3xl md:text-4xl text-stone-900 mb-4">
+                <h2 className="font-serif italic text-4xl md:text-5xl text-stone-900 mb-4">
                   {t.festival.title}
                 </h2>
-                <p className="text-stone-500 text-sm max-w-lg mx-auto leading-relaxed">
+                <p className="font-serif italic text-stone-500 text-base max-w-lg mx-auto leading-relaxed">
                   {t.festival.subtitle}
                 </p>
                 <div className="w-12 h-px bg-stone-300 mx-auto mt-6" />
@@ -579,19 +585,19 @@ export default function App() {
                       transition={{ delay: idx * 0.06 }}
                       className="flex items-baseline gap-4 pb-4 border-b border-stone-200"
                     >
-                      <span className="font-serif italic text-stone-400 text-sm shrink-0 w-6">
+                      <span className="font-serif italic text-stone-400 text-base shrink-0 w-6">
                         {String(idx + 1).padStart(2, '0')}
                       </span>
-                      <span className="font-medium text-stone-800 text-[15px]">{item.name}</span>
+                      <span className="font-serif text-stone-900 text-lg">{item.name}</span>
                     </motion.li>
                   ))}
                 </ol>
 
                 <div className="text-center border border-stone-300 py-8 px-6 bg-stone-100/40">
-                  <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-2">
+                  <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-2">
                     {t.festival.priceLabel}
                   </p>
-                  <p className="font-serif text-3xl text-stone-900">{t.festival.price}</p>
+                  <p className="font-serif text-4xl text-stone-900">{t.festival.price}</p>
                 </div>
               </div>
             </motion.div>
